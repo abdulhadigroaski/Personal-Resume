@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abdul Hadi Groaski | BSIT Student and Aspiring Software Developer</title>
+  <meta name="description" content="Personal resume of Abdul Hadi Groaski, a BSIT student at Quaid-i-Azam University, Islamabad, with Java and OOP projects and an interest in frontend development.">
+  <meta name="author" content="Abdul Hadi Groaski">
+  <meta name="theme-color" content="#14233a">
+  <!-- Empty icon prevents a missing-favicon request; no extra files are needed -->
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the sidebar navigation -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Site header: identity, introduction, navigation and contact links -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <h1 class="site-header__name">Abdul Hadi Groaski</h1>
+      <p class="site-header__title">BSIT Student | Aspiring Software Developer</p>
+      <p class="site-header__location">Islamabad, Pakistan</p>
+
+      <p class="site-header__intro">
+        I am an Information Technology student who enjoys learning how software
+        is designed and built. I work mainly in Java and am growing my skills in
+        frontend development.
+      </p>
+
+      <nav class="site-nav" aria-label="Resume sections">
+        <ul class="site-nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#development">Development</a></li>
+        </ul>
+      </nav>
+
+      <ul class="contact-list" aria-label="Contact links">
+        <li><a href="mailto:abdulhadigroaski@gmail.com">Email: abdulhadigroaski@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/abdul-hadi-groaski-959a49318">LinkedIn: Abdul Hadi Groaski</a></li>
+        <li><a href="https://github.com/abdulhadigroaski">GitHub: abdulhadigroaski</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="content">
+
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section__heading">About me</h2>
+      <p>
+        I am a Bachelor of Science in Information Technology (BSIT) student at
+        Quaid-i-Azam University in Islamabad. I am interested in software
+        development and programming, and I learn best by building small projects
+        that apply what I study in class.
+      </p>
+      <p>
+        So far my projects are console-based Java applications that practise
+        object-oriented design, collections and file handling. I am now adding
+        frontend skills, starting with semantic HTML and CSS.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="section__heading">Education</h2>
+      <article class="entry">
+        <h3 class="entry__title">Bachelor of Science in Information Technology (BSIT)</h3>
+        <p class="entry__meta">Quaid-i-Azam University (QAU), Islamabad, Pakistan</p>
+        <p class="entry__status">Currently pursuing this degree.</p>
+      </article>
+    </section>
+
+    <!-- Technical skills -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section__heading">Technical skills</h2>
+      <p class="section__lead">
+        These are the areas I am currently studying and practising.
+      </p>
+
+      <div class="skills-grid">
+        <article class="skill-group">
+          <h3 class="skill-group__title">Programming</h3>
+          <ul class="tag-list">
+            <li>Java</li>
+            <li>Object-Oriented Programming (OOP)</li>
+          </ul>
+        </article>
+
+        <article class="skill-group">
+          <h3 class="skill-group__title">Data structure fundamentals</h3>
+          <ul class="tag-list">
+            <li>Arrays</li>
+            <li>Linked Lists</li>
+            <li>Stacks</li>
+            <li>Queues</li>
+          </ul>
+        </article>
+
+        <article class="skill-group">
+          <h3 class="skill-group__title">Web basics</h3>
+          <ul class="tag-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Basic frontend development</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects (descriptions based on each repository's README) -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section__heading">Projects</h2>
+      <p class="section__lead">
+        Two console-based Java projects built to practise coursework concepts.
+        Neither has a graphical interface or a database.
+      </p>
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <h3 class="project-card__title">Expense Tracker</h3>
+          <p class="project-card__summary">
+            A console-based Java application for recording and reviewing
+            personal expenses. Expenses are saved to a file and loaded again
+            when the program starts.
+          </p>
+
+          <h4 class="project-card__label">What it does</h4>
+          <ul class="project-card__features">
+            <li>Adds expenses with a description, category, amount and date</li>
+            <li>Displays and deletes recorded expenses</li>
+            <li>Shows the total and the number of expenses</li>
+            <li>Summarises spending by category using a <code>HashMap</code></li>
+            <li>Handles invalid input and file errors with exception handling</li>
+          </ul>
+
+          <h4 class="project-card__label">Concepts demonstrated</h4>
+          <ul class="tag-list tag-list--small" aria-label="Expense Tracker concepts">
+            <li>Java</li>
+            <li>OOP</li>
+            <li>ArrayList</li>
+            <li>HashMap</li>
+            <li>File handling</li>
+            <li>Exception handling</li>
+            <li>Java Date and Time API</li>
+          </ul>
+
+          <a class="project-card__link" href="https://github.com/abdulhadigroaski/Expense-Tracker">
+            View Expense Tracker on GitHub
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-card__title">Student Management System</h3>
+          <p class="project-card__summary">
+            A console-based Java application for managing students, courses
+            and related academic information. It was built to practise
+            object-oriented design and is meant as a foundation for later
+            versions.
+          </p>
+
+          <h4 class="project-card__label">What it does</h4>
+          <ul class="project-card__features">
+            <li>Manages curriculum, semesters and courses</li>
+            <li>Manages batches and students</li>
+            <li>Sets up course offerings with teachers</li>
+            <li>Supports add, remove, search and display operations</li>
+            <li>Validates input and handles exceptions</li>
+          </ul>
+
+          <h4 class="project-card__label">Concepts demonstrated</h4>
+          <ul class="tag-list tag-list--small" aria-label="Student Management System concepts">
+            <li>Java</li>
+            <li>OOP</li>
+            <li>Object composition</li>
+            <li>ArrayList</li>
+            <li>Exception handling</li>
+            <li>Java Time API</li>
+          </ul>
+
+          <p class="project-card__note">
+            Data is stored in memory only, so it is lost when the program closes.
+          </p>
+
+          <a class="project-card__link" href="https://github.com/abdulhadigroaski/Student-Management-System">
+            View Student Management System on GitHub
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Professional development -->
+    <section id="development" class="section" aria-labelledby="development-heading">
+      <h2 id="development-heading" class="section__heading">Professional development</h2>
+      <p>
+        I want to keep improving as a software developer. My focus right now is
+        on writing clean, well-structured code, strengthening my data structures
+        knowledge, and learning frontend development with semantic HTML, CSS and
+        accessibility in mind.
+      </p>
+      <p>
+        This resume was built from scratch with only HTML5 and CSS3 as Task 1 of
+        a Frontend Web Developer internship at Barakah TechLabs.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Site footer: repeated contact links -->
+  <footer class="site-footer">
+    <h2 class="site-footer__heading">Get in touch</h2>
+    <ul class="contact-list contact-list--footer">
+      <li><a href="mailto:abdulhadigroaski@gmail.com">Email: abdulhadigroaski@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/abdul-hadi-groaski-959a49318">LinkedIn: Abdul Hadi Groaski</a></li>
+      <li><a href="https://github.com/abdulhadigroaski">GitHub: abdulhadigroaski</a></li>
+    </ul>
+    <p class="site-footer__note">&copy; 2026 Abdul Hadi Groaski. Built with HTML5 and CSS3.</p>
+  </footer>
+
+</body>
+</html>

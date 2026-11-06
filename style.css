@@ -1,0 +1,543 @@
+/* ==========================================================================
+   Personal Resume | Abdul Hadi Groaski
+   Plain CSS3 only. No frameworks, libraries or external fonts.
+
+   Contents
+   1. Design tokens (custom properties)
+   2. Base and reset
+   3. Accessibility helpers
+   4. Page layout
+   5. Header (sidebar on large screens)
+   6. Main content sections
+   7. Education entry
+   8. Skills
+   9. Project cards
+   10. Footer
+   11. Responsive adjustments
+   12. Reduced motion
+   ========================================================================== */
+
+
+/* 1. Design tokens
+   Contrast notes (WCAG AA needs 4.5:1 for body text):
+   - --ink on --surface-page: about 14:1
+   - --ink-muted on --surface-card: about 7:1
+   - --accent on --surface-card: about 7:1
+   - --header-text and --header-link on --header-bg: above 9:1
+   -------------------------------------------------------------------------- */
+:root {
+  --header-bg: #14233a;
+  --header-text: #e8eef6;
+  --header-muted: #b9c6d8;
+  --header-link: #9fdcec;
+
+  --surface-page: #f4f6f9;
+  --surface-card: #ffffff;
+  --ink: #17212f;
+  --ink-muted: #475569;
+  --accent: #0b5f73;
+  --accent-soft: #e3f1f5;
+  --border: #d5dce6;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+
+  --radius: 0.5rem;
+  --sidebar-width: 22rem;
+  --content-max: 46rem;
+}
+
+
+/* 2. Base and reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.5rem; /* keeps headings visible after anchor jumps */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--surface-page);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 65ch; /* comfortable line length */
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+code {
+  font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  background-color: var(--accent-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+}
+
+
+/* 3. Accessibility helpers
+   -------------------------------------------------------------------------- */
+
+/* Clear, consistent keyboard focus indicator */
+a:focus-visible {
+  outline: 3px solid #f2b705;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link: hidden until it receives keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  color: var(--ink);
+  font-weight: 600;
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+
+/* 4. Page layout
+   Mobile first: everything stacks in one column.
+   Large screens switch to a sidebar plus content (see section 11).
+   -------------------------------------------------------------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 1rem;
+  flex: 1 0 auto;
+}
+
+
+/* 5. Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+}
+
+.site-header__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2rem;
+}
+
+.site-header__name {
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.site-header__title {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--header-link);
+}
+
+.site-header__location {
+  margin: 0 0 1.25rem;
+  color: var(--header-muted);
+}
+
+.site-header__intro {
+  color: var(--header-text);
+  margin-bottom: 1.5rem;
+}
+
+.site-header a {
+  color: var(--header-link);
+}
+
+.site-header a:focus-visible,
+.site-footer a:focus-visible {
+  outline-color: #ffd54a;
+}
+
+/* Section navigation */
+.site-nav {
+  margin-bottom: 1.5rem;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-nav__list a {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav__list a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--header-link);
+}
+
+/* Contact links (used in header and footer) */
+.contact-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.contact-list a {
+  overflow-wrap: anywhere; /* long email or URLs never cause sideways scrolling */
+}
+
+
+/* 6. Main content sections
+   -------------------------------------------------------------------------- */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section__heading {
+  font-size: 1.65rem;
+  color: var(--ink);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section__lead {
+  color: var(--ink-muted);
+}
+
+
+/* 7. Education entry
+   -------------------------------------------------------------------------- */
+.entry {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.entry__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.entry__meta {
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+
+.entry__status {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+
+/* 8. Skills
+   -------------------------------------------------------------------------- */
+.skills-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.skill-group {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.skill-group__title {
+  font-size: 1.05rem;
+  margin-bottom: 0.85rem;
+}
+
+/* Shared "tag" style for skills and project concepts */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list li {
+  background-color: var(--accent-soft);
+  color: #0a4a5a;
+  border: 1px solid #b7d9e2;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.tag-list--small li {
+  font-size: 0.85rem;
+  padding: 0.15rem 0.65rem;
+}
+
+
+/* 9. Project cards
+   -------------------------------------------------------------------------- */
+.project-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(20, 35, 58, 0.12);
+}
+
+.project-card__title {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-card__summary {
+  color: var(--ink-muted);
+}
+
+.project-card__label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.project-card__features {
+  margin-bottom: 1rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.project-card__features li {
+  margin-bottom: 0.3rem;
+}
+
+.project-card__features li::marker {
+  color: var(--accent);
+}
+
+.project-card .tag-list {
+  margin-bottom: 1.25rem;
+}
+
+.project-card__note {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* Pushes the link to the bottom so both cards align */
+.project-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-weight: 600;
+}
+
+
+/* 10. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 2rem 1.25rem;
+}
+
+.site-footer > * {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-footer__heading {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: var(--header-link);
+}
+
+.site-footer__note {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--header-muted);
+}
+
+
+/* 11. Responsive adjustments
+   -------------------------------------------------------------------------- */
+
+/* Tablets and up: two-column project grid and skills grid */
+@media (min-width: 40em) {
+  .content {
+    padding: 3rem 2rem 1.5rem;
+  }
+
+  .site-header__inner {
+    padding: 3rem 2rem 2.5rem;
+  }
+
+  .site-footer {
+    padding: 2.5rem 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-list--footer {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+/* Large screens: fixed sidebar header beside the scrolling content */
+@media (min-width: 64em) {
+  body {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    grid-template-areas:
+      "header main"
+      "header footer";
+    grid-template-rows: 1fr auto;
+  }
+
+  .site-header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .site-header__inner {
+    padding: 3rem 1.75rem 2rem;
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    grid-area: main;
+    max-width: none;
+    margin: 0;
+    padding: 3.5rem 3rem 1.5rem;
+  }
+
+  .content > .section {
+    max-width: var(--content-max);
+  }
+
+  .site-footer {
+    grid-area: footer;
+    padding: 2.5rem 3rem;
+  }
+
+  .site-footer > * {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Skills stay in three columns only when the content area is wide enough */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Very wide screens: allow skills in one row */
+@media (min-width: 80em) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content > .section {
+    max-width: 56rem;
+  }
+}
+
+
+/* 12. Reduced motion
+   Respects the operating system preference for less motion.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
